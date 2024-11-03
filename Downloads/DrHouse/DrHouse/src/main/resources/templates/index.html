@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dr. House - Página Principal</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Enlaza tu archivo CSS aquí -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Navegación */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            background-color: #00509e;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #004080;
+            color: #e9ecef;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Secciones */
+        .section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: justify;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .section h2 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .section img {
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+            display: block;
+        }
+        .section img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Detalles de la serie */
+        .serie-details {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+        }
+        .serie-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify; /* Justifica el texto en los párrafos de información */
+        }
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        /* Calificación */
+        .rating {
+            font-size: 1.2em;
+            color: #ffcc00;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #e9ecef;
+            background-color: #003366;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        main, footer, header {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dr. House</h1>
+</header>
+
+<div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/seriedetalles/1">Detalles de la Serie</a>
+    <a href="/temporada/1">Temporadas</a>
+    <a href="/personajes">Personajes</a>
+</div>
+
+<main>
+    <!-- Detalles de la Serie -->
+    <section class="section">
+        <div class="serie-details">
+            <div class="serie-poster">
+                <img th:src="@{/posterPrincipal/PosterPrincipal.jpg}" alt="Poster de [[${serie.nombre}]]">
+            </div>
+            <div class="serie-info">
+                <h2>Dr. House</h2>
+                <p><span class="highlight">Clasificación:</span> <span class="rating">★★★★☆ 8.7/10</span> - 743 opiniones, 535,000 críticas</p>
+                <p><span class="highlight">Promedio de Calificación:</span> <span class="rating">★★★★☆ 8.6</span></p>
+                <p><span class="highlight">Descripción:</span> Serie que sigue al Dr. Gregory House, un brillante pero irascible médico que resuelve complejos casos médicos con métodos poco convencionales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capítulo Mejor Calificado -->
+    <section class="section">
+        <h2>Capítulo Mejor Calificado</h2>
+        <p><strong>Nombre:</strong> House's Head (2008)</p>
+        <p><strong>Descripción:</strong> Un autobús en el que viajaba House se estrella. House afirma que hay una víctima en el autobús que se está muriendo, pero no a causa del accidente. No se detiene ante nada para averiguar quién es el paciente y qué le pasa.</p>
+        <p><strong>Calificación:</strong> ★★★★★ 9.8</p>
+    </section>
+</main>
+
+<footer>
+    <p>Desarrollado por Juan Camilo Arias. Fecha de creación: 2 de noviembre de 2024.</p>
+    <p>Este proyecto es un ejercicio profesional sobre la serie <em>"Dr. House"</em>.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Personajes - Dr. House</title>
+    <link rel="stylesheet" href="/css/styles.css"> <!-- Enlaza tu archivo CSS aquí -->
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #003366;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Navegación */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            background-color: #00509e;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-links a:hover {
+            background-color: #004080;
+            color: #e9ecef;
+        }
+
+        /* Contenido principal */
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        /* Secciones */
+        .section {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .section h2 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Lista de personajes */
+        .character-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .character-list li {
+            width: 220px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .character-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .character-list img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        .character-details {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .character-details p {
+            margin: 5px 0;
+        }
+
+        .highlight {
+            color: #d9534f;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #e9ecef;
+            background-color: #003366;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        main, footer, header {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Personajes de Dr. House</h1>
+</header>
+
+<div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/seriedetalles/1">Detalles de la Serie</a>
+    <a href="/temporada/1">Temporadas</a>
+    <a href="/personajes">Personajes</a>
+</div>
+
+<main>
+    <!-- Listado de Personajes -->
+    <section class="section">
+        <h2>Personajes Principales</h2>
+        <ul class="character-list">
+            <li th:each="personaje : ${personajes}">
+                <img th:src="@{/Personaje/{foto}(foto=${personaje.foto})}" alt="Imagen de [[${personaje.nombre}]]">
+                <div class="character-details">
+                    <p><strong th:text="${personaje.nombre}">Nombre del Personaje</strong></p>
+                    <p th:text="${personaje.descripcion}">Descripción del Personaje</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>Desarrollado por Juan Camilo Arias. Fecha de creación: 2-11-2024.<br>
+        Este proyecto es un ejercicio profesional sobre la serie <em>"Dr. House"</em>.</p>
+</footer>
+
+</body>
+</html>
